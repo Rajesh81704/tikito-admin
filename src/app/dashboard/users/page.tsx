@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { getToken } from "@/lib/auth";
 import { adminApi, UserRecord } from "@/lib/api";
 import Topbar from "@/components/Topbar";
+import { useDashboardContext } from "../layout";
 import { ToggleLeft, ToggleRight, Trash2 } from "lucide-react";
 
 export default function UsersPage() {
+  const { onMenuClick } = useDashboardContext();
   const [users, setUsers] = useState<UserRecord[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -38,10 +40,10 @@ export default function UsersPage() {
 
   return (
     <>
-      <Topbar title="Users" />
-      <div className="p-7 flex-1">
+      <Topbar title="Users" onMenuClick={onMenuClick} />
+      <div className="p-4 sm:p-7 flex-1">
         {/* Summary */}
-        <div className="flex gap-4 mb-5">
+        <div className="flex flex-wrap gap-3 sm:gap-4 mb-5">
           <MiniStat label="Total Users" value={users.length.toString()} />
           <MiniStat label="Active" value={users.filter((u) => u.is_active).length.toString()} />
           <MiniStat label="Verified" value={users.filter((u) => u.is_verified).length.toString()} />

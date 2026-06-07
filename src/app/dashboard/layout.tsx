@@ -11,6 +11,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [adminName, setAdminName] = useState("Admin");
   const [adminRole, setAdminRole] = useState("Super Admin");
   const [ready, setReady] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (!isAuthenticated()) {
@@ -40,12 +41,35 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="flex h-screen overflow-hidden">
-      <Sidebar adminName={adminName} adminRole={adminRole} />
-      <main className="flex-1 overflow-y-auto flex flex-col" style={{
+      <Sidebar
+        adminName={adminName}
+        adminRole={adminRole}
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+      />
+      <main className="flex-1 overflow-y-auto flex flex-col min-w-0" style={{
         background: "radial-gradient(ellipse at 20% 0%, rgba(45,107,62,0.12) 0%, transparent 55%), radial-gradient(ellipse at 80% 100%, rgba(17,37,24,0.6) 0%, transparent 50%), var(--color-pitch)",
       }}>
-        {children}
+        {/* Inject onMenuClick to children via context-like prop passing through Topbar */}
+        <DashboardContext.Provider value={{ onMenuClick: () => setSidebarOpen(true) }}>
+          {children}
+        </DashboardContext.Provider>
       </main>
     </div>
   );
+}
+
+// Simple context to pass menu toggle to pages
+import { createContext, useContext } from "react";
+
+interface DashboardContextType {
+  onMenuClick: () => void;
+}
+
+export const DashboardContext = createContext<DashboardContextType>({
+  onMenuClick: () => {},
+});
+
+export function useDashboardContext() {
+  return useContext(DashboardContext);
 }

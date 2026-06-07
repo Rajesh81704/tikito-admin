@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { getToken } from "@/lib/auth";
 import { adminApi, TurfRecord } from "@/lib/api";
 import Topbar from "@/components/Topbar";
+import { useDashboardContext } from "../layout";
 import { ToggleLeft, ToggleRight, Trash2 } from "lucide-react";
 
 export default function TurfsPage() {
+  const { onMenuClick } = useDashboardContext();
   const [turfs, setTurfs] = useState<TurfRecord[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -38,17 +40,17 @@ export default function TurfsPage() {
 
   return (
     <>
-      <Topbar title="Turfs & Fields" />
-      <div className="p-7 flex-1">
+      <Topbar title="Turfs & Fields" onMenuClick={onMenuClick} />
+      <div className="p-4 sm:p-7 flex-1">
         {/* Summary */}
-        <div className="flex gap-4 mb-5">
+        <div className="flex flex-wrap gap-3 sm:gap-4 mb-5">
           <MiniStat label="Total Turfs" value={turfs.length.toString()} />
           <MiniStat label="Active" value={turfs.filter((t) => t.is_active).length.toString()} />
           <MiniStat label="Total Grounds" value={turfs.reduce((acc, t) => acc + (t.no_of_grounds || 0), 0).toString()} />
         </div>
 
         {/* Grid Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {loading && <p className="col-span-full text-center text-[var(--color-ivory-muted)] py-8">Loading...</p>}
           {!loading && turfs.length === 0 && <p className="col-span-full text-center text-[var(--color-ivory-muted)] py-8">No turfs found</p>}
           {turfs.map((t) => (

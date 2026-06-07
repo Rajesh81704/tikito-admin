@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { getToken } from "@/lib/auth";
 import { adminApi, VendorRecord } from "@/lib/api";
 import Topbar from "@/components/Topbar";
+import { useDashboardContext } from "../layout";
 import { ToggleLeft, ToggleRight, Trash2, CheckCircle } from "lucide-react";
 
 export default function VendorsPage() {
+  const { onMenuClick } = useDashboardContext();
   const [vendors, setVendors] = useState<VendorRecord[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -48,10 +50,10 @@ export default function VendorsPage() {
 
   return (
     <>
-      <Topbar title="Vendors" />
-      <div className="p-7 flex-1">
+      <Topbar title="Vendors" onMenuClick={onMenuClick} />
+      <div className="p-4 sm:p-7 flex-1">
         {/* Summary */}
-        <div className="flex gap-4 mb-5">
+        <div className="flex flex-wrap gap-3 sm:gap-4 mb-5">
           <MiniStat label="Total Vendors" value={vendors.length.toString()} />
           <MiniStat label="Active" value={vendors.filter((v) => v.is_active).length.toString()} />
           <MiniStat label="Verified" value={vendors.filter((v) => v.is_verified).length.toString()} />

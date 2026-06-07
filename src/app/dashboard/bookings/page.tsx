@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { getToken } from "@/lib/auth";
 import { adminApi, BookingRecord } from "@/lib/api";
 import Topbar from "@/components/Topbar";
+import { useDashboardContext } from "../layout";
 import { XCircle, Trash2 } from "lucide-react";
 
 export default function BookingsPage() {
+  const { onMenuClick } = useDashboardContext();
   const [bookings, setBookings] = useState<BookingRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>("ALL");
@@ -42,10 +44,10 @@ export default function BookingsPage() {
 
   return (
     <>
-      <Topbar title="Bookings" />
-      <div className="p-7 flex-1">
+      <Topbar title="Bookings" onMenuClick={onMenuClick} />
+      <div className="p-4 sm:p-7 flex-1">
         {/* Filters */}
-        <div className="flex gap-2 mb-5">
+        <div className="flex flex-wrap gap-2 mb-5">
           {["ALL", "CONFIRMED", "PENDING", "CANCELLED"].map((f) => (
             <button
               key={f}

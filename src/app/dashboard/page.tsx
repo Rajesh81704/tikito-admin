@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { getToken } from "@/lib/auth";
 import { adminApi, BookingRecord } from "@/lib/api";
 import Topbar from "@/components/Topbar";
+import { useDashboardContext } from "./layout";
 import {
   TrendingUp,
   CalendarCheck,
   Landmark,
   Users,
-  Store,
   ArrowUp,
   ArrowDown,
 } from "lucide-react";
@@ -26,6 +26,7 @@ interface DashboardStats {
 }
 
 export default function DashboardPage() {
+  const { onMenuClick } = useDashboardContext();
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [bookings, setBookings] = useState<BookingRecord[]>([]);
   const [loading, setLoading] = useState(true);
@@ -44,7 +45,7 @@ export default function DashboardPage() {
   if (loading || !stats) {
     return (
       <>
-        <Topbar title="Dashboard" />
+        <Topbar title="Dashboard" onMenuClick={onMenuClick} />
         <div className="flex-1 flex items-center justify-center">
           <p className="text-[var(--color-ivory-muted)]">Loading dashboard...</p>
         </div>
@@ -61,14 +62,14 @@ export default function DashboardPage() {
 
   return (
     <>
-      <Topbar title="Good Morning," subtitle="Admin" />
-      <div className="p-7 flex-1">
+      <Topbar title="Good Morning," subtitle="Admin" onMenuClick={onMenuClick} />
+      <div className="p-4 sm:p-7 flex-1">
         {/* Stat Cards */}
-        <div className="grid grid-cols-4 gap-4 mb-7">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-5 sm:mb-7">
           {statCards.map((card, i) => (
             <div
               key={i}
-              className={`rounded-xl p-5 relative overflow-hidden transition hover:border-[rgba(77,175,112,0.4)] ${
+              className={`rounded-xl p-4 sm:p-5 relative overflow-hidden transition hover:border-[rgba(77,175,112,0.4)] ${
                 card.gold ? "border-[rgba(201,168,76,0.25)]" : "border-[rgba(77,175,112,0.2)]"
               }`}
               style={{
@@ -76,22 +77,22 @@ export default function DashboardPage() {
                 border: `1px solid ${card.gold ? "rgba(201,168,76,0.25)" : "rgba(77,175,112,0.2)"}`,
               }}
             >
-              <div className="absolute top-0 right-0 w-20 h-20 rounded-bl-[80px]" style={{
+              <div className="absolute top-0 right-0 w-20 h-20 rounded-bl-[80px] hidden sm:block" style={{
                 background: card.gold ? "rgba(201,168,76,0.06)" : "rgba(77,175,112,0.05)",
                 borderRadius: "0 12px 0 80px",
               }} />
-              <div className={`flex items-center gap-1.5 text-[13px] tracking-[0.15em] uppercase mb-2.5 font-medium ${card.gold ? "text-[var(--color-gold)]" : "text-[var(--color-line)]"}`}>
-                <card.icon className="w-3.5 h-3.5" />
-                {card.label}
+              <div className={`flex items-center gap-1.5 text-[11px] sm:text-[13px] tracking-[0.15em] uppercase mb-2 sm:mb-2.5 font-medium ${card.gold ? "text-[var(--color-gold)]" : "text-[var(--color-line)]"}`}>
+                <card.icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                <span className="truncate">{card.label}</span>
               </div>
-              <div className="text-[34px] font-bold text-[var(--color-ivory)] leading-none tracking-tight mb-1.5" style={{ fontFamily: "var(--font-serif)" }}>
+              <div className="text-[22px] sm:text-[34px] font-bold text-[var(--color-ivory)] leading-none tracking-tight mb-1 sm:mb-1.5" style={{ fontFamily: "var(--font-serif)" }}>
                 {card.value}
               </div>
-              <div className="text-[12px] text-[var(--color-ivory-muted)] tracking-[0.04em]">
+              <div className="text-[11px] sm:text-[12px] text-[var(--color-ivory-muted)] tracking-[0.04em]">
                 {card.sub}
               </div>
               {card.trend && (
-                <div className={`inline-flex items-center gap-1 text-[11px] mt-2 px-2 py-0.5 rounded-full font-semibold ${
+                <div className={`inline-flex items-center gap-1 text-[10px] sm:text-[11px] mt-2 px-2 py-0.5 rounded-full font-semibold ${
                   card.trendUp ? "bg-[rgba(77,175,112,0.12)] text-[var(--color-glow)]" : "bg-[rgba(192,57,43,0.12)] text-[#f08070]"
                 }`}>
                   {card.trendUp ? <ArrowUp className="w-2.5 h-2.5" /> : <ArrowDown className="w-2.5 h-2.5" />}
@@ -107,16 +108,16 @@ export default function DashboardPage() {
           background: "linear-gradient(145deg, rgba(17,37,24,0.85), rgba(10,26,15,0.75))",
           border: "1px solid rgba(77,175,112,0.18)",
         }}>
-          <div className="px-5 py-4 border-b border-[rgba(77,175,112,0.12)] flex items-center justify-between">
-            <h3 className="text-[17px] font-semibold text-[var(--color-ivory)] tracking-[0.03em]" style={{ fontFamily: "var(--font-serif)" }}>
+          <div className="px-4 sm:px-5 py-3 sm:py-4 border-b border-[rgba(77,175,112,0.12)] flex items-center justify-between">
+            <h3 className="text-[15px] sm:text-[17px] font-semibold text-[var(--color-ivory)] tracking-[0.03em]" style={{ fontFamily: "var(--font-serif)" }}>
               Recent Bookings
             </h3>
             <a href="/dashboard/bookings" className="text-[11px] tracking-[0.12em] uppercase text-[var(--color-line)] font-semibold hover:text-[var(--color-glow)] transition">
               View All →
             </a>
           </div>
-          <div className="px-5 py-3.5">
-            <table className="w-full border-collapse">
+          <div className="px-4 sm:px-5 py-3.5 overflow-x-auto">
+            <table className="w-full border-collapse min-w-[600px]">
               <thead>
                 <tr>
                   <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Guest</th>

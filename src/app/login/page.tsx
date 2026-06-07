@@ -36,7 +36,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center" style={{
       background: "radial-gradient(ellipse at 30% 20%, rgba(45,107,62,0.15) 0%, transparent 55%), radial-gradient(ellipse at 70% 80%, rgba(17,37,24,0.6) 0%, transparent 50%), var(--color-pitch)",
     }}>
-      <div className="w-full max-w-md p-8 rounded-2xl border border-[rgba(77,175,112,0.2)]" style={{
+      <div className="w-full max-w-md mx-4 p-6 sm:p-8 rounded-2xl border border-[rgba(77,175,112,0.2)]" style={{
         background: "linear-gradient(145deg, rgba(17,37,24,0.9), rgba(10,26,15,0.8))",
       }}>
         {/* Logo */}
