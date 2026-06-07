@@ -5,6 +5,7 @@ import { getToken } from "@/lib/auth";
 import { adminApi, VendorRecord } from "@/lib/api";
 import Topbar from "@/components/Topbar";
 import { useDashboardContext } from "../layout";
+import { SkeletonTable } from "@/components/SkeletonRow";
 import { ToggleLeft, ToggleRight, Trash2, CheckCircle } from "lucide-react";
 
 export default function VendorsPage() {
@@ -67,7 +68,9 @@ export default function VendorsPage() {
         }}>
           <div className="px-5 py-3.5 overflow-x-auto">
             {loading ? (
-              <p className="py-8 text-center text-[var(--color-ivory-muted)]">Loading...</p>
+              <table className="w-full border-collapse">
+                <SkeletonTable rows={8} cols={7} />
+              </table>
             ) : (
               <table className="w-full border-collapse">
                 <thead>

@@ -5,6 +5,7 @@ import { getToken } from "@/lib/auth";
 import { adminApi, TurfRecord } from "@/lib/api";
 import Topbar from "@/components/Topbar";
 import { useDashboardContext } from "../layout";
+import { SkeletonCard } from "@/components/SkeletonRow";
 import { ToggleLeft, ToggleRight, Trash2 } from "lucide-react";
 
 export default function TurfsPage() {
@@ -51,7 +52,7 @@ export default function TurfsPage() {
 
         {/* Grid Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          {loading && <p className="col-span-full text-center text-[var(--color-ivory-muted)] py-8">Loading...</p>}
+          {loading && Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}
           {!loading && turfs.length === 0 && <p className="col-span-full text-center text-[var(--color-ivory-muted)] py-8">No turfs found</p>}
           {turfs.map((t) => (
             <div key={t.turf_field_id} className="rounded-xl p-5 relative overflow-hidden transition hover:border-[rgba(77,175,112,0.4)]" style={{

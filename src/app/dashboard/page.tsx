@@ -5,6 +5,7 @@ import { getToken } from "@/lib/auth";
 import { adminApi, BookingRecord } from "@/lib/api";
 import Topbar from "@/components/Topbar";
 import { useDashboardContext } from "./layout";
+import { SkeletonTable, SkeletonStatCard } from "@/components/SkeletonRow";
 import {
   TrendingUp,
   CalendarCheck,
@@ -46,8 +47,27 @@ export default function DashboardPage() {
     return (
       <>
         <Topbar title="Dashboard" onMenuClick={onMenuClick} />
-        <div className="flex-1 flex items-center justify-center">
-          <p className="text-[var(--color-ivory-muted)]">Loading dashboard...</p>
+        <div className="p-4 sm:p-7 flex-1">
+          {/* Skeleton stat cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-5 sm:mb-7">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <SkeletonStatCard key={i} />
+            ))}
+          </div>
+          {/* Skeleton table */}
+          <div className="rounded-xl overflow-hidden" style={{
+            background: "linear-gradient(145deg, rgba(17,37,24,0.85), rgba(10,26,15,0.75))",
+            border: "1px solid rgba(77,175,112,0.18)",
+          }}>
+            <div className="px-4 sm:px-5 py-3 sm:py-4 border-b border-[rgba(77,175,112,0.12)]">
+              <div className="h-5 w-36 rounded bg-[rgba(77,175,112,0.1)] animate-pulse" />
+            </div>
+            <div className="px-4 sm:px-5 py-3.5">
+              <table className="w-full border-collapse">
+                <SkeletonTable rows={6} cols={5} />
+              </table>
+            </div>
+          </div>
         </div>
       </>
     );

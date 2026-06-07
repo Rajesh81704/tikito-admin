@@ -5,6 +5,7 @@ import { getToken } from "@/lib/auth";
 import { adminApi, BookingRecord } from "@/lib/api";
 import Topbar from "@/components/Topbar";
 import { useDashboardContext } from "../layout";
+import { SkeletonTable } from "@/components/SkeletonRow";
 import { XCircle, Trash2 } from "lucide-react";
 
 export default function BookingsPage() {
@@ -70,7 +71,9 @@ export default function BookingsPage() {
         }}>
           <div className="px-5 py-3.5 overflow-x-auto">
             {loading ? (
-              <p className="py-8 text-center text-[var(--color-ivory-muted)]">Loading...</p>
+              <table className="w-full border-collapse min-w-[800px]">
+                <SkeletonTable rows={8} cols={8} />
+              </table>
             ) : (
               <table className="w-full border-collapse min-w-[800px]">
                 <thead>
