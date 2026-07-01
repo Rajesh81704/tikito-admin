@@ -18,13 +18,13 @@ export default function Topbar({ title, subtitle, onMenuClick }: TopbarProps) {
   });
 
   return (
-    <div className="px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between border-b border-[rgba(77,175,112,0.12)] sticky top-0 z-30 flex-shrink-0" style={{
-      background: "rgba(5, 14, 8, 0.6)",
-      backdropFilter: "blur(4px)",
+    <div className="px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between border-b border-[var(--color-pitch-light)] sticky top-0 z-30 flex-shrink-0" style={{
+      background: "rgba(24, 24, 27, 0.8)",
+      backdropFilter: "blur(8px)",
     }}>
       <div className="flex items-center gap-3">
         {/* Mobile hamburger */}
-        <button onClick={onMenuClick} className="lg:hidden p-1.5 rounded hover:bg-[rgba(77,175,112,0.12)] transition cursor-pointer">
+        <button onClick={onMenuClick} className="lg:hidden p-1.5 rounded hover:bg-[var(--color-pitch-mid)] transition cursor-pointer">
           <Menu className="w-5 h-5 text-[var(--color-ivory-dim)]" />
         </button>
         <h2 className="text-[20px] sm:text-[26px] font-semibold text-[var(--color-ivory)] tracking-[0.02em]" style={{ fontFamily: "var(--font-serif)" }}>
@@ -52,9 +52,9 @@ export default function Topbar({ title, subtitle, onMenuClick }: TopbarProps) {
 
 function IconButton({ children, badge, className = "" }: { children: React.ReactNode; badge?: boolean; className?: string }) {
   return (
-    <button className={`w-9 h-9 rounded-lg items-center justify-center text-[var(--color-ivory-dim)] hover:bg-[rgba(77,175,112,0.15)] hover:text-[var(--color-ivory)] transition relative cursor-pointer flex ${className}`} style={{
-      background: "rgba(77,175,112,0.08)",
-      border: "1px solid rgba(77,175,112,0.18)",
+    <button className={`w-9 h-9 rounded-lg items-center justify-center text-[var(--color-ivory-dim)] hover:bg-[var(--color-pitch-light)] hover:text-[var(--color-ivory)] transition relative cursor-pointer flex ${className}`} style={{
+      background: "var(--color-pitch-mid)",
+      border: "1px solid var(--color-pitch-light)",
     }}>
       {children}
       {badge && (

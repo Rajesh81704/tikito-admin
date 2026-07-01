@@ -55,8 +55,8 @@ export default function BookingsPage() {
               onClick={() => setFilter(f)}
               className={`px-3.5 py-1.5 rounded-full text-[11px] tracking-[0.08em] uppercase font-semibold transition cursor-pointer border ${
                 filter === f
-                  ? "bg-[rgba(77,175,112,0.15)] text-[var(--color-glow)] border-[rgba(77,175,112,0.3)]"
-                  : "bg-transparent text-[var(--color-ivory-muted)] border-[rgba(77,175,112,0.12)] hover:border-[rgba(77,175,112,0.25)]"
+                  ? "bg-[var(--color-pitch-mid)] text-[var(--color-glow)] border-[var(--color-pitch-light)]"
+                  : "bg-transparent text-[var(--color-ivory-muted)] border-[rgba(255,255,255,0.08)] hover:border-[var(--color-pitch-light)]"
               }`}
             >
               {f === "ALL" ? "All" : f}
@@ -66,8 +66,8 @@ export default function BookingsPage() {
 
         {/* Table */}
         <div className="rounded-xl overflow-hidden" style={{
-          background: "linear-gradient(145deg, rgba(17,37,24,0.85), rgba(10,26,15,0.75))",
-          border: "1px solid rgba(77,175,112,0.18)",
+          background: "linear-gradient(145deg, var(--color-pitch-mid), var(--color-pitch))",
+          border: "1px solid var(--color-pitch-light)",
         }}>
           <div className="px-5 py-3.5 overflow-x-auto">
             {loading ? (
@@ -78,14 +78,14 @@ export default function BookingsPage() {
               <table className="w-full border-collapse min-w-[800px]">
                 <thead>
                   <tr>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Guest</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Turf / Ground</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Date</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Slot</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Amount</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Payment</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Status</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Actions</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[rgba(255,255,255,0.1)]">Guest</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[rgba(255,255,255,0.1)]">Turf / Ground</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[rgba(255,255,255,0.1)]">Date</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[rgba(255,255,255,0.1)]">Slot</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[rgba(255,255,255,0.1)]">Amount</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[rgba(255,255,255,0.1)]">Payment</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[rgba(255,255,255,0.1)]">Status</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[rgba(255,255,255,0.1)]">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -93,7 +93,7 @@ export default function BookingsPage() {
                     <tr><td colSpan={8} className="py-8 text-center text-[var(--color-ivory-muted)] text-sm">No bookings found</td></tr>
                   )}
                   {filtered.map((b) => (
-                    <tr key={b.booking_id} className="border-b border-[rgba(77,175,112,0.06)] last:border-b-0">
+                    <tr key={b.booking_id} className="border-b border-[rgba(255,255,255,0.05)] last:border-b-0">
                       <td className="py-3 text-[14px] text-[var(--color-ivory)] font-medium" style={{ fontFamily: "var(--font-serif)" }}>
                         {b.user_name || "—"}
                         <div className="text-[11px] text-[var(--color-ivory-muted)] font-normal">{b.user_phone || ""}</div>
@@ -133,11 +133,11 @@ export default function BookingsPage() {
 
 function StatusPill({ status }: { status: string }) {
   const styles: Record<string, string> = {
-    CONFIRMED: "bg-[rgba(77,175,112,0.12)] text-[var(--color-glow)] border-[rgba(77,175,112,0.25)]",
+    CONFIRMED: "bg-[rgba(255,255,255,0.05)] text-[var(--color-glow)] border-[rgba(255,255,255,0.1)]",
     PENDING: "bg-[rgba(212,137,10,0.12)] text-[var(--color-gold-light)] border-[rgba(212,137,10,0.25)]",
     CANCELLED: "bg-[rgba(192,57,43,0.12)] text-[#f08070] border-[rgba(192,57,43,0.25)]",
     COMPLETED: "bg-[rgba(26,111,168,0.12)] text-[#7ec8f0] border-[rgba(26,111,168,0.25)]",
-    PAID: "bg-[rgba(77,175,112,0.12)] text-[var(--color-glow)] border-[rgba(77,175,112,0.25)]",
+    PAID: "bg-[rgba(255,255,255,0.05)] text-[var(--color-glow)] border-[rgba(255,255,255,0.1)]",
   };
   return (
     <span className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[0.06em] uppercase border ${styles[status] || styles.PENDING}`}>

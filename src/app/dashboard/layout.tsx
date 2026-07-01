@@ -48,7 +48,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         onClose={() => setSidebarOpen(false)}
       />
       <main className="flex-1 overflow-y-auto flex flex-col min-w-0" style={{
-        background: "radial-gradient(ellipse at 20% 0%, rgba(45,107,62,0.12) 0%, transparent 55%), radial-gradient(ellipse at 80% 100%, rgba(17,37,24,0.6) 0%, transparent 50%), var(--color-pitch)",
+        background: "radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.03) 0%, transparent 55%), radial-gradient(ellipse at 80% 100%, rgba(0,0,0,0.2) 0%, transparent 50%), var(--color-pitch)",
       }}>
         {/* Inject onMenuClick to children via context-like prop passing through Topbar */}
         <DashboardContext.Provider value={{ onMenuClick: () => setSidebarOpen(true) }}>

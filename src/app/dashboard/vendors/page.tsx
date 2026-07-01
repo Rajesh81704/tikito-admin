@@ -63,8 +63,8 @@ export default function VendorsPage() {
 
         {/* Table */}
         <div className="rounded-xl overflow-hidden" style={{
-          background: "linear-gradient(145deg, rgba(17,37,24,0.85), rgba(10,26,15,0.75))",
-          border: "1px solid rgba(77,175,112,0.18)",
+          background: "var(--color-pitch-mid)",
+          border: "1px solid var(--color-pitch-light)",
         }}>
           <div className="px-5 py-3.5 overflow-x-auto">
             {loading ? (
@@ -75,13 +75,13 @@ export default function VendorsPage() {
               <table className="w-full border-collapse">
                 <thead>
                   <tr>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Name</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Phone</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Email</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Address</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Verified</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Status</th>
-                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[rgba(77,175,112,0.6)] pb-3 font-semibold border-b border-[rgba(77,175,112,0.1)]">Actions</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[var(--color-pitch-light)]">Name</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[var(--color-pitch-light)]">Phone</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[var(--color-pitch-light)]">Email</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[var(--color-pitch-light)]">Address</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[var(--color-pitch-light)]">Verified</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[var(--color-pitch-light)]">Status</th>
+                    <th className="text-left text-[10px] tracking-[0.2em] uppercase text-[var(--color-ivory-muted)] pb-3 font-semibold border-b border-[var(--color-pitch-light)]">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -89,7 +89,7 @@ export default function VendorsPage() {
                     <tr><td colSpan={7} className="py-8 text-center text-[var(--color-ivory-muted)] text-sm">No vendors found</td></tr>
                   )}
                   {vendors.map((v) => (
-                    <tr key={v.vendor_id} className="border-b border-[rgba(77,175,112,0.06)] last:border-b-0">
+                    <tr key={v.vendor_id} className="border-b border-[var(--color-pitch-light)] last:border-b-0 opacity-80 last:opacity-100">
                       <td className="py-3 text-[14px] text-[var(--color-ivory)] font-medium" style={{ fontFamily: "var(--font-serif)" }}>{v.vendor_full_name}</td>
                       <td className="py-3 text-[13px] text-[var(--color-ivory-dim)]">{v.vendor_phone_no || "—"}</td>
                       <td className="py-3 text-[13px] text-[var(--color-ivory-dim)]">{v.vendor_email_id || "—"}</td>
@@ -97,8 +97,8 @@ export default function VendorsPage() {
                       <td className="py-3">
                         <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase border ${
                           v.is_verified
-                            ? "bg-[rgba(77,175,112,0.12)] text-[var(--color-glow)] border-[rgba(77,175,112,0.25)]"
-                            : "bg-[rgba(212,137,10,0.12)] text-[var(--color-gold-light)] border-[rgba(212,137,10,0.25)]"
+                            ? "bg-[rgba(34,197,94,0.12)] text-[var(--color-turf-bright)] border-[rgba(34,197,94,0.25)]"
+                            : "bg-[rgba(201,168,76,0.12)] text-[var(--color-gold-light)] border-[rgba(201,168,76,0.25)]"
                         }`}>
                           {v.is_verified ? "Yes" : "Pending"}
                         </span>
@@ -106,8 +106,8 @@ export default function VendorsPage() {
                       <td className="py-3">
                         <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase border ${
                           v.is_active
-                            ? "bg-[rgba(77,175,112,0.12)] text-[var(--color-glow)] border-[rgba(77,175,112,0.25)]"
-                            : "bg-[rgba(192,57,43,0.12)] text-[#f08070] border-[rgba(192,57,43,0.25)]"
+                            ? "bg-[rgba(34,197,94,0.12)] text-[var(--color-turf-bright)] border-[rgba(34,197,94,0.25)]"
+                            : "bg-[rgba(239,68,68,0.12)] text-[var(--color-red)] border-[rgba(239,68,68,0.25)]"
                         }`}>
                           {v.is_active ? "Active" : "Inactive"}
                         </span>
@@ -115,15 +115,15 @@ export default function VendorsPage() {
                       <td className="py-3">
                         <div className="flex gap-1.5">
                           {!v.is_verified && (
-                            <button onClick={() => handleVerify(v.vendor_id)} className="p-1.5 rounded hover:bg-[rgba(77,175,112,0.12)] transition cursor-pointer" title="Verify">
+                            <button onClick={() => handleVerify(v.vendor_id)} className="p-1.5 rounded hover:bg-[var(--color-pitch-light)] transition cursor-pointer" title="Verify">
                               <CheckCircle className="w-4 h-4 text-[var(--color-line)]" />
                             </button>
                           )}
-                          <button onClick={() => handleToggle(v)} className="p-1.5 rounded hover:bg-[rgba(77,175,112,0.12)] transition cursor-pointer" title={v.is_active ? "Deactivate" : "Activate"}>
-                            {v.is_active ? <ToggleRight className="w-4 h-4 text-[var(--color-glow)]" /> : <ToggleLeft className="w-4 h-4 text-[var(--color-ivory-muted)]" />}
+                          <button onClick={() => handleToggle(v)} className="p-1.5 rounded hover:bg-[var(--color-pitch-light)] transition cursor-pointer" title={v.is_active ? "Deactivate" : "Activate"}>
+                            {v.is_active ? <ToggleRight className="w-4 h-4 text-[var(--color-turf-bright)]" /> : <ToggleLeft className="w-4 h-4 text-[var(--color-ivory-muted)]" />}
                           </button>
-                          <button onClick={() => handleDelete(v.vendor_id)} className="p-1.5 rounded hover:bg-[rgba(192,57,43,0.15)] transition cursor-pointer" title="Delete">
-                            <Trash2 className="w-4 h-4 text-[#f08070]" />
+                          <button onClick={() => handleDelete(v.vendor_id)} className="p-1.5 rounded hover:bg-[rgba(239,68,68,0.15)] transition cursor-pointer" title="Delete">
+                            <Trash2 className="w-4 h-4 text-[var(--color-red)]" />
                           </button>
                         </div>
                       </td>
@@ -142,10 +142,10 @@ export default function VendorsPage() {
 function MiniStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="px-4 py-3 rounded-lg" style={{
-      background: "linear-gradient(145deg, rgba(17,37,24,0.9), rgba(10,26,15,0.8))",
-      border: "1px solid rgba(77,175,112,0.2)",
+      background: "var(--color-pitch-mid)",
+      border: "1px solid var(--color-pitch-light)",
     }}>
-      <div className="text-[10px] tracking-[0.15em] uppercase text-[var(--color-line)] font-medium mb-1">{label}</div>
+      <div className="text-[10px] tracking-[0.15em] uppercase text-[var(--color-ivory-muted)] font-medium mb-1 opacity-70">{label}</div>
       <div className="text-[22px] font-bold text-[var(--color-ivory)]" style={{ fontFamily: "var(--font-serif)" }}>{value}</div>
     </div>
   );

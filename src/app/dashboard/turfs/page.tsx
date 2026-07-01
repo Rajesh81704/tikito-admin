@@ -55,9 +55,9 @@ export default function TurfsPage() {
           {loading && Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}
           {!loading && turfs.length === 0 && <p className="col-span-full text-center text-[var(--color-ivory-muted)] py-8">No turfs found</p>}
           {turfs.map((t) => (
-            <div key={t.turf_field_id} className="rounded-xl p-5 relative overflow-hidden transition hover:border-[rgba(77,175,112,0.4)]" style={{
-              background: "linear-gradient(145deg, rgba(17,37,24,0.9), rgba(10,26,15,0.8))",
-              border: `1px solid ${t.is_active ? "rgba(77,175,112,0.2)" : "rgba(192,57,43,0.2)"}`,
+            <div key={t.turf_field_id} className="rounded-xl p-5 relative overflow-hidden transition hover:border-[var(--color-pitch-light)]" style={{
+              background: "linear-gradient(145deg, var(--color-pitch-mid), var(--color-pitch))",
+              border: `1px solid ${t.is_active ? "var(--color-pitch-light)" : "rgba(192,57,43,0.2)"}`,
             }}>
               {/* Header */}
               <div className="flex items-start justify-between mb-3">
@@ -71,7 +71,7 @@ export default function TurfsPage() {
                 </div>
                 <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase border ${
                   t.is_active
-                    ? "bg-[rgba(77,175,112,0.12)] text-[var(--color-glow)] border-[rgba(77,175,112,0.25)]"
+                    ? "bg-[rgba(255,255,255,0.05)] text-[var(--color-glow)] border-[rgba(255,255,255,0.1)]"
                     : "bg-[rgba(192,57,43,0.12)] text-[#f08070] border-[rgba(192,57,43,0.25)]"
                 }`}>
                   {t.is_active ? "Active" : "Inactive"}
@@ -92,10 +92,10 @@ export default function TurfsPage() {
               </div>
 
               {/* Actions */}
-              <div className="flex gap-2 pt-3 border-t border-[rgba(77,175,112,0.1)]">
+              <div className="flex gap-2 pt-3 border-t border-[rgba(255,255,255,0.1)]">
                 <button onClick={() => handleToggle(t)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold tracking-[0.06em] transition cursor-pointer" style={{
-                  background: "rgba(77,175,112,0.08)",
-                  border: "1px solid rgba(77,175,112,0.18)",
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid var(--color-pitch-light)",
                   color: t.is_active ? "var(--color-glow)" : "var(--color-ivory-muted)",
                 }}>
                   {t.is_active ? <ToggleRight className="w-3.5 h-3.5" /> : <ToggleLeft className="w-3.5 h-3.5" />}

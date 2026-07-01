@@ -34,10 +34,10 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center" style={{
-      background: "radial-gradient(ellipse at 30% 20%, rgba(45,107,62,0.15) 0%, transparent 55%), radial-gradient(ellipse at 70% 80%, rgba(17,37,24,0.6) 0%, transparent 50%), var(--color-pitch)",
+      background: "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.02) 0%, transparent 55%), radial-gradient(ellipse at 70% 80%, rgba(0,0,0,0.2) 0%, transparent 50%), var(--color-pitch)",
     }}>
-      <div className="w-full max-w-md mx-4 p-6 sm:p-8 rounded-2xl border border-[rgba(77,175,112,0.2)]" style={{
-        background: "linear-gradient(145deg, rgba(17,37,24,0.9), rgba(10,26,15,0.8))",
+      <div className="w-full max-w-md mx-4 p-6 sm:p-8 rounded-2xl border border-[var(--color-pitch-light)]" style={{
+        background: "var(--color-pitch-mid)",
       }}>
         {/* Logo */}
         <div className="text-center mb-8">
@@ -63,7 +63,7 @@ export default function LoginPage() {
           )}
 
           <div>
-            <label className="block text-xs tracking-[0.15em] uppercase text-[var(--color-line)] mb-2 font-semibold">
+            <label className="block text-xs tracking-[0.15em] uppercase text-[var(--color-ivory-muted)] mb-2 font-semibold opacity-70">
               Email
             </label>
             <input
@@ -71,14 +71,14 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-3 rounded-lg bg-[rgba(77,175,112,0.06)] border border-[rgba(77,175,112,0.2)] text-[var(--color-ivory)] placeholder:text-[var(--color-ivory-muted)] focus:outline-none focus:border-[var(--color-line)] transition"
+              className="w-full px-4 py-3 rounded-lg bg-[var(--color-pitch)] border border-[var(--color-pitch-light)] text-[var(--color-ivory)] placeholder:text-[var(--color-ivory-muted)] focus:outline-none focus:border-[var(--color-turf)] transition"
               placeholder="admin@tikito.in"
               style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}
             />
           </div>
 
           <div>
-            <label className="block text-xs tracking-[0.15em] uppercase text-[var(--color-line)] mb-2 font-semibold">
+            <label className="block text-xs tracking-[0.15em] uppercase text-[var(--color-ivory-muted)] mb-2 font-semibold opacity-70">
               Password
             </label>
             <input
@@ -86,7 +86,7 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-3 rounded-lg bg-[rgba(77,175,112,0.06)] border border-[rgba(77,175,112,0.2)] text-[var(--color-ivory)] placeholder:text-[var(--color-ivory-muted)] focus:outline-none focus:border-[var(--color-line)] transition"
+              className="w-full px-4 py-3 rounded-lg bg-[var(--color-pitch)] border border-[var(--color-pitch-light)] text-[var(--color-ivory)] placeholder:text-[var(--color-ivory-muted)] focus:outline-none focus:border-[var(--color-turf)] transition"
               placeholder="••••••••"
               style={{ fontFamily: "var(--font-body)", fontSize: "15px" }}
             />
@@ -95,10 +95,10 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-lg font-semibold text-sm tracking-[0.08em] uppercase transition cursor-pointer disabled:opacity-50"
+            className="w-full py-3 rounded-lg font-semibold text-sm tracking-[0.08em] uppercase transition cursor-pointer disabled:opacity-50 hover:opacity-90 active:scale-[0.99]"
             style={{
-              background: "linear-gradient(135deg, var(--color-turf), var(--color-turf-bright))",
-              border: "1px solid rgba(77,175,112,0.4)",
+              background: "var(--color-turf)",
+              border: "1px solid var(--color-turf-bright)",
               color: "var(--color-ivory)",
               fontFamily: "var(--font-serif)",
             }}
